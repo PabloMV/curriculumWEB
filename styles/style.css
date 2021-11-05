@@ -1,0 +1,186 @@
+@import url(https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body h1,
+body h2,
+body h3,
+body h4 {
+  font-family: "Orbitron", sans-serif;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+main {
+  @apply flex flex-col;
+}
+
+header,
+section {
+  position: relative;
+  height: max-content;
+}
+
+.bg-effect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.translateX66 {
+  display: block;
+}
+.translateX66:checked {
+  display: block;
+  transform: translateX(80%);
+}
+.bg-effect path {
+  fill: green;
+  fill-opacity: 1;
+  stroke: green;
+  stroke-width: 30px;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 0;
+  animation: bgeffect 2s linear infinite;
+}
+.wrap {
+  width: max-content;
+  backdrop-filter: blur(3px);
+  border: 5px solid;
+  padding: 1rem;
+}
+.bg-effect svg g {
+  transform: scale(0.2) translate(-15%, -230%);
+}
+@layer components {
+  #tc-one {
+    min-height: 15em;
+    overflow: hidden;
+    position: relative;
+  }
+  #tc-one svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transition: 0.35s;
+  }
+  #tc-one ellipse {
+    transform-origin: center;
+    transition: 0.35s;
+  }
+
+  #tc-one:hover #tc-aza {
+    transform: rotatex(70deg) rotatey(70deg) scale(0.9);
+    transition: 0.35s;
+  }
+
+  #tc-one:hover #tc-cza {
+    transform: rotatey(50deg) rotatex(20deg) scale(0.95);
+    transition: 0.35s;
+  }
+
+  #tc-one:hover #tc-dza {
+    transform: scale(1.5) !important;
+    opacity: 0.3;
+    transition: 0.35s;
+  }
+
+  #tc-one:hover #tc-eza {
+    transform: rotatex(70deg) rotatez(-90deg) scale(0.8) !important;
+    opacity: 0.3;
+    transition: 0.35s;
+  }
+
+  #tc-one:hover #tc-aza ellipse,
+  #tc-one:hover #tc-bza ellipse,
+  #tc-one:hover #tc-cza ellipse {
+    animation-name: rotate;
+    animation-duration: 120s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(7200deg);
+    }
+  }
+
+  #tc-one:hover #tc-gza {
+    animation-name: rotatez;
+    animation-duration: 120s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotatez(0deg);
+    }
+    100% {
+      transform: rotatez(7200deg);
+    }
+  }
+}
+
+header img,
+header nav {
+  @apply relative;
+}
+
+.mobile-menu ul {
+  overflow: hidden;
+  max-height: 219px;
+  transition: max-height 0.8s ease-in-out;
+}
+#main-nav {
+  z-index: 9;
+}
+.slidedown {
+  max-height: 0 !important;
+}
+
+a.active {
+  @apply border-b-4 border-green-600;
+}
+li.active {
+  @apply underline text-green-600;
+}
+
+.mobile-menu a {
+  @apply block text-sm px-2 py-4 text-gray-500 font-semibold hover:text-black transition duration-300;
+}
+.primary-navbar a{
+  @apply py-4 px-2  text-gray-500 font-semibold hover:text-black transition duration-300;
+}
+
+@media (min-width: 768px) {
+  .bg-effect svg g {
+    transform: scale(0.1) translate(15%, -230%);
+  }
+}
+@keyframes bgeffect {
+  0% {
+    stroke-dashoffset: 20000;
+    fill: white;
+  }
+  50% {
+    stroke-dashoffset: 10000;
+    fill: black;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: white;
+  }
+}
